@@ -3,6 +3,7 @@
   --light-grey: #e2e8f0;
   --grey: #94a3b8;
   --green: #4ade80;
+  --dark-green: #22c55e;
   --red: #f87171;
   --gap-xxs: 4px;
   --gap-xs: 8px;
@@ -36,6 +37,11 @@ body {
 
 svg {
   width: 1rem;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 header {
@@ -117,4 +123,44 @@ footer {
   font-weight: bold;
 
   padding: var(--gap-m);
+}
+
+dialog {
+  margin: auto;
+  border-radius: var(--gap-xs);
+  border: none;
+  background-color: var(--lighter-grey);
+}
+
+#add-book-dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+  padding: var(--gap-l);
+}
+
+#add-book-dialog form .vertical {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xxs);
+}
+
+#add-book-dialog form .horizontal {
+  display: flex;
+  gap: var(--gap-xs);
+}
+
+#add-book-dialog form button {
+  flex: 1;
+}
+
+#add-book-dialog form input,
+#add-book-dialog form button {
+  padding: var(--gap-xxs) var(--gap-xs);
+  border-radius: var(--gap-xxs);
+  border: 1px solid black;
+}
+
+::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
 }
