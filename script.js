@@ -71,3 +71,16 @@ for (const book of myLibrary) {
 }
 
 addBookToLibrary(book1, myLibrary);
+
+const addBookButton = document.querySelector('#add-book');
+const dialog = document.querySelector("#add-book-dialog");
+const confirmAddBookButton = document.querySelector("#confirm-dialog");
+
+addBookButton.addEventListener('click', () => {
+  dialog.showModal();
+});
+
+confirmAddBookButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  dialog.close();
+});
