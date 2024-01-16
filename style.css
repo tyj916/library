@@ -91,6 +91,7 @@ main .cards .card button.remove-book {
 }
 
 main .card#add-book {
+  background-color: var(--lighter-grey);
   color: var(--grey);
   font-weight: bold;
   font-size: 1.5rem;
@@ -99,6 +100,10 @@ main .card#add-book {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+main .card#add-book:hover {
+  background-color: white;
 }
 
 main .card#add-book svg {
