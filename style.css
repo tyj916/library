@@ -1,0 +1,115 @@
+:root {
+  --lighter-grey: #f8fafc;
+  --light-grey: #e2e8f0;
+  --grey: #94a3b8;
+  --green: #4ade80;
+  --red: #f87171;
+  --gap-xxs: 4px;
+  --gap-xs: 8px;
+  --gap-s: 12px;
+  --gap-m: 16px;
+  --gap-l: 24px;
+  --gap-xl: 36px;
+  --gap-xxl: 48px;
+  --container-width: 1200px;
+  --shadow: 0px 1px 2px 3px var(--light-grey);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(fonts/Roboto/Roboto-Regular.ttf);
+}
+
+body {
+  font-family: system-ui, 'Roboto', sans-serif;
+  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+svg {
+  width: 1rem;
+}
+
+header {
+  box-shadow: var(--shadow);
+  z-index: 1;
+}
+
+main,
+footer {
+  background-color: var(--lighter-grey);
+}
+
+main {
+  flex: 1;
+  padding: var(--gap-m) 0;
+}
+
+.container {
+  max-width: var(--container-width);
+  padding: var(--gap-l);
+  margin: auto;
+}
+
+main .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--gap-l);
+}
+
+main .cards .card {
+  background-color: white;
+  box-shadow: var(--shadow);
+  padding: var(--gap-xl);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+
+main .cards .card button {
+  padding: 8px 0;
+  background-color: var(--light-grey);
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+main .cards .card button.read {
+  background-color: var(--green);
+}
+
+main .cards .card button.remove-book {
+  background-color: var(--red);
+}
+
+main .card.add-book {
+  color: var(--grey);
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .card.add-book svg {
+  fill: var(--grey);
+  width: 100px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+
+  padding: var(--gap-m);
+}
