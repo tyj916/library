@@ -36,6 +36,7 @@ function displayBook(book) {
   newBook.appendChild(pages);
 
   const read = document.createElement('button');
+  read.classList.add('read-status')
   if (book.isRead) {
     read.classList.add('read');
     read.textContent = 'Read';
@@ -93,4 +94,16 @@ confirmAddBookButton.addEventListener('click', (e) => {
   form.reset();
 
   dialog.close();
+});
+
+const readStatus = document.querySelectorAll(".read-status");
+readStatus.forEach((button) => {
+  button.addEventListener('click', e => {
+    e.target.classList.toggle('read');
+    if (e.target.classList.contains('read')) {
+      e.target.textContent = 'Read';
+    } else {
+      e.target.textContent = 'Not read';
+    }
+  });
 });
