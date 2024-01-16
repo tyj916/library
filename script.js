@@ -64,12 +64,7 @@ const book2 = new Book("A Gentleman in Moscow",
                        true,
                       );
 
-myLibrary.push(book2);
-
-for (const book of myLibrary) {
-  displayBook(book);
-}
-
+addBookToLibrary(book2, myLibrary);
 addBookToLibrary(book1, myLibrary);
 
 const addBookButton = document.querySelector('#add-book');
@@ -82,5 +77,20 @@ addBookButton.addEventListener('click', () => {
 
 confirmAddBookButton.addEventListener('click', (e) => {
   e.preventDefault();
+
+  const newBookTitle = document.querySelector("#new-book-title");
+  const newBookAuthor = document.querySelector("#new-book-author");
+  const newBookPages = document.querySelector("#new-book-pages");
+  const newBookRead = document.querySelector("#new-book-read");
+
+  const newBook = new Book(newBookTitle.value,
+                           newBookAuthor.value,
+                           newBookPages.value,
+                           newBookRead.checked);
+  addBookToLibrary(newBook, myLibrary);
+
+  const form = dialog.querySelector("form");
+  form.reset();
+
   dialog.close();
 });
