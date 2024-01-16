@@ -90,7 +90,7 @@ main .cards .card button.remove-book {
   background-color: var(--red);
 }
 
-main .card.add-book {
+main .card#add-book {
   color: var(--grey);
   font-weight: bold;
   font-size: 1.5rem;
@@ -101,7 +101,7 @@ main .card.add-book {
   align-items: center;
 }
 
-main .card.add-book svg {
+main .card#add-book svg {
   fill: var(--grey);
   width: 100px;
 }
