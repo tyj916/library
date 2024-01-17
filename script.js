@@ -11,12 +11,19 @@ function Book(title, author, pages, isRead) {
 
 function addBookToLibrary(book, library) {
   library.push(book);
-  displayBook(book);
+  displayBook(book, library.length);
 }
 
-function displayBook(book) {
+function displayBooklist(library) {
+  for (let i = 0; i < library.length; i++) {
+    displayBook(library[i], i);
+  }
+}
+
+function displayBook(book, index) {
   const newBook = document.createElement('div');
   newBook.classList.add('book', 'card');
+  newBook.dataset.indexNumber = index;
 
   const bookTitle = document.createElement('h3');
   bookTitle.classList.add('book-title');
@@ -65,8 +72,8 @@ const book2 = new Book("A Gentleman in Moscow",
                        true,
                       );
 
-addBookToLibrary(book2, myLibrary);
-addBookToLibrary(book1, myLibrary);
+myLibrary.push(book1, book2);
+displayBooklist(myLibrary);
 
 const addBookButton = document.querySelector('#add-book');
 const dialog = document.querySelector("#add-book-dialog");
@@ -105,5 +112,12 @@ readStatus.forEach((button) => {
     } else {
       e.target.textContent = 'Not read';
     }
+  });
+});
+
+const removeBook = document.querySelectorAll(".remove-book");
+removeBook.forEach((button) => {
+  button.addEventListener('click', e => {
+    console.log(e.target.parentNode.dataset.indexNumber);
   });
 });
