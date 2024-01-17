@@ -103,21 +103,42 @@ confirmAddBookButton.addEventListener('click', (e) => {
   dialog.close();
 });
 
-const readStatus = document.querySelectorAll(".read-status");
-readStatus.forEach((button) => {
-  button.addEventListener('click', e => {
-    e.target.classList.toggle('read');
-    if (e.target.classList.contains('read')) {
-      e.target.textContent = 'Read';
+const books = document.querySelector(".books");
+books.addEventListener('click', event => {
+  const target = event.target;
+  const targetBookIndex = target.parentNode.dataset.indexNumber;
+
+  if (!target.classList) return;
+  
+  if (target.classList.contains('read-status')) {
+    target.classList.toggle('read');
+    if (target.classList.contains('read')) {
+      target.textContent = 'Read';
+      myLibrary[targetBookIndex].isRead = true;
     } else {
-      e.target.textContent = 'Not read';
+      target.textContent = 'Not read';
+      myLibrary[targetBookIndex].isRead = false;
     }
-  });
+  }
+
 });
 
-const removeBook = document.querySelectorAll(".remove-book");
-removeBook.forEach((button) => {
-  button.addEventListener('click', e => {
-    console.log(e.target.parentNode.dataset.indexNumber);
-  });
-});
+
+// const readStatus = document.querySelectorAll(".read-status");
+// readStatus.forEach((button) => {
+//   button.addEventListener('click', e => {
+//     e.target.classList.toggle('read');
+//     if (e.target.classList.contains('read')) {
+//       e.target.textContent = 'Read';
+//     } else {
+//       e.target.textContent = 'Not read';
+//     }
+//   });
+// });
+
+// const removeBook = document.querySelectorAll(".remove-book");
+// removeBook.forEach((button) => {
+//   button.addEventListener('click', e => {
+//     console.log(e.target.parentNode.dataset.indexNumber);
+//   });
+// });
