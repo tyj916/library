@@ -11,7 +11,7 @@ function Book(title, author, pages, isRead) {
 
 function addBookToLibrary(book, library) {
   library.push(book);
-  displayBook(book, library.length);
+  displayBook(book, library.length - 1);
 }
 
 function refreshBooklist() {
