@@ -42,19 +42,21 @@ function displayBook(book, index) {
   pages.textContent = `${book.pages} pages`;
   newBook.appendChild(pages);
 
-  const read = document.createElement('button');
-  read.classList.add('read-status')
+  const readStatus = document.createElement('button');
+  readStatus.classList.add('read-status')
   if (book.isRead) {
-    read.classList.add('read');
-    read.textContent = 'Read';
+    readStatus.classList.add('read');
+    readStatus.textContent = 'Read';
   } else {
-    read.textContent = 'Not read';
+    readStatus.textContent = 'Not read';
   }
-  newBook.appendChild(read);
+  readStatus.value = 'read-status';
+  newBook.appendChild(readStatus);
 
   const removeButton = document.createElement('button');
   removeButton.classList.add('remove-book');
   removeButton.textContent = 'Remove';
+  removeButton.value = 'remove-book';
   newBook.appendChild(removeButton);
 
   const books = document.querySelector('.books');
@@ -108,33 +110,22 @@ books.addEventListener('click', event => {
   const target = event.target;
   const targetBookIndex = target.parentNode.dataset.indexNumber;
 
-  if (!target.classList) return;
-  
-  if (target.classList.contains('read-status')) {
-    target.classList.toggle('read');
-    if (target.classList.contains('read')) {
-      target.textContent = 'Read';
-      myLibrary[targetBookIndex].isRead = true;
-    } else {
-      target.textContent = 'Not read';
-      myLibrary[targetBookIndex].isRead = false;
-    }
+  if (target.tagName !== 'BUTTON') return;
+
+  switch (target.value) {
+    case 'read-status':
+      target.classList.toggle('read');
+      if (target.classList.contains('read')) {
+        target.textContent = 'Read';
+        myLibrary[targetBookIndex].isRead = true;
+      } else {
+        target.textContent = 'Not read';
+        myLibrary[targetBookIndex].isRead = false;
+      }
+      break;
+
   }
-
 });
-
-
-// const readStatus = document.querySelectorAll(".read-status");
-// readStatus.forEach((button) => {
-//   button.addEventListener('click', e => {
-//     e.target.classList.toggle('read');
-//     if (e.target.classList.contains('read')) {
-//       e.target.textContent = 'Read';
-//     } else {
-//       e.target.textContent = 'Not read';
-//     }
-//   });
-// });
 
 // const removeBook = document.querySelectorAll(".remove-book");
 // removeBook.forEach((button) => {
