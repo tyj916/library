@@ -35,10 +35,6 @@ body {
   min-height: 100vh;
 }
 
-svg {
-  width: 1rem;
-}
-
 button:hover {
   cursor: pointer;
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.5);
@@ -112,9 +108,9 @@ main .card#add-book:hover {
   background-color: white;
 }
 
-main .card#add-book svg {
-  fill: var(--grey);
-  width: 100px;
+main .card#add-book .plus {
+  font-size: 5rem;
+  font-weight: 100;
 }
 
 footer {
