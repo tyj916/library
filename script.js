@@ -14,6 +14,14 @@ function addBookToLibrary(book, library) {
   displayBook(book, library.length);
 }
 
+function refreshBooklist() {
+  const books = document.querySelectorAll(".book");
+  for (const book of books) {
+    book.remove();
+  }
+  displayBooklist(myLibrary);
+}
+
 function displayBooklist(library) {
   for (let i = 0; i < library.length; i++) {
     displayBook(library[i], i);
@@ -124,12 +132,9 @@ books.addEventListener('click', event => {
       }
       break;
 
+    case 'remove-book':
+      myLibrary.splice(targetBookIndex, 1);
+      refreshBooklist();
+      break;
   }
 });
-
-// const removeBook = document.querySelectorAll(".remove-book");
-// removeBook.forEach((button) => {
-//   button.addEventListener('click', e => {
-//     console.log(e.target.parentNode.dataset.indexNumber);
-//   });
-// });
