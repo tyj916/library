@@ -7,6 +7,7 @@ class Library {
 
   addBook(book) {
     this.booklist.push(book);
+    book.index = this.booklist.length-1;
   }
 
   removeBook(book) {
@@ -67,7 +68,8 @@ const library = (function (library) {
     const newBook = new Book(newBookTitle.value,
                              newBookAuthor.value,
                              newBookPages.value,
-                             newBookRead.checked);
+                             newBookRead.checked,
+                             booklist.length - 1,);
     library.addBook(newBook);
     renderLibrary();
   
@@ -96,7 +98,10 @@ const library = (function (library) {
         break;
   
       case 'remove-book':
-        booklist.splice(targetBookIndex, 1);
+        library.removeBook(booklist[targetBookIndex], 1);
+        booklist.forEach((book, index) => {
+          book.index = index;
+        })
         renderLibrary();
         break;
     }
