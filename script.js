@@ -41,6 +41,7 @@ myLibrary.addBook(book2);
 
 
 const library = (function (library) {
+  const booklist = library.booklist;
 
   // cache DOM
   const booksContainer = document.querySelector(".books");
@@ -67,7 +68,8 @@ const library = (function (library) {
                              newBookAuthor.value,
                              newBookPages.value,
                              newBookRead.checked);
-    addBookToLibrary(newBook, myLibrary);
+    library.addBook(newBook);
+    renderLibrary();
   
     const form = dialog.querySelector("form");
     form.reset();
@@ -86,16 +88,16 @@ const library = (function (library) {
         target.classList.toggle('read');
         if (target.classList.contains('read')) {
           target.textContent = 'Read';
-          myLibrary[targetBookIndex].isRead = true;
+          booklist[targetBookIndex].isRead = true;
         } else {
           target.textContent = 'Not read';
-          myLibrary[targetBookIndex].isRead = false;
+          booklist[targetBookIndex].isRead = false;
         }
         break;
   
       case 'remove-book':
-        myLibrary.splice(targetBookIndex, 1);
-        refreshBooklist();
+        booklist.splice(targetBookIndex, 1);
+        renderLibrary();
         break;
     }
   }
@@ -104,7 +106,7 @@ const library = (function (library) {
     const books = booksContainer.querySelectorAll(".book");
     books.forEach(book => book.remove());
   
-    library.forEach((book, index) => {
+    booklist.forEach((book, index) => {
       const newBook = document.createElement('div');
       newBook.classList.add('book', 'card');
       newBook.dataset.indexNumber = index;
@@ -146,4 +148,4 @@ const library = (function (library) {
       booksContainer.appendChild(newBook);
     })
   }
-})(myLibrary.booklist);
+})(myLibrary);
